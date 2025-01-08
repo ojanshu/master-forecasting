@@ -1,54 +1,3 @@
-// import React from 'react';
-// import { Chart, registerables } from 'chart.js';
-// import { Candlestick } from 'react-chartjs-2';
-
-// Chart.register(...registerables);
-
-// const StockChart = () => {
-    const stockData = [
-        { date: '2025-01-01', open: 100, high: 110, low: 90, close: 105 },
-        { date: '2025-01-02', open: 105, high: 115, low: 95, close: 110 },
-        // Add more data points as needed
-    ];
-
-    const data = {
-        datasets: [{
-            label: 'Stock Prices',
-            data: stockData.map(item => ({
-                x: item.date,
-                o: item.open,
-                h: item.high,
-                l: item.low,
-                c: item.close
-            })),
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        }]
-    };
-
-    // const options = {
-    //     scales: {
-    //         x: {
-    //             type: 'time',
-    //             time: {
-    //                 unit: 'day'
-    //             }
-    //         },
-    //         y: {
-    //             beginAtZero: false
-    //         }
-    //     }
-    // };
-
-//     return (
-//         <div>
-//             <h2>Stock Market Chart</h2>
-//             <Candlestick data={data} options={options} />
-//         </div>
-//     );
-// };
-
-// export default StockChart;
 
 import React, { useEffect } from 'react';
 import {
@@ -63,7 +12,6 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-// Register required components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -85,11 +33,25 @@ const StockChart = () => {
   }, []);
 
   const stockData = [
-    { date: '2025-01-01', open: 100, high: 110, low: 90, close: 105 },
+    { date: '2025-01-01', open: 100, high: 120, low: 90, close: 105 },
     { date: '2025-01-02', open: 105, high: 115, low: 95, close: 110 },
-    { date: '2025-01-03', open: 110, high: 120, low: 100, close: 115 },
+    { date: '2025-01-03', open: 110, high: 130, low: 100, close: 115 },
     { date: '2025-01-04', open: 115, high: 125, low: 105, close: 120 },
+    { date: '2025-01-05', open: 120, high: 130, low: 110, close: 115 },
+    { date: '2025-01-06', open: 115, high: 125, low: 100, close: 105 },
+    { date: '2025-01-07', open: 105, high: 115, low: 95, close: 100 },
+    { date: '2025-01-08', open: 100, high: 110, low: 90, close: 95 },
+    { date: '2025-01-09', open: 95, high: 105, low: 85, close: 100 },
+    { date: '2025-01-10', open: 100, high: 120, low: 90, close: 110 },
+    { date: '2025-01-11', open: 110, high: 125, low: 100, close: 115 },
+    { date: '2025-01-12', open: 115, high: 135, low: 105, close: 125 },
+    { date: '2025-01-13', open: 125, high: 140, low: 115, close: 120 },
+    { date: '2025-01-14', open: 120, high: 130, low: 110, close: 115 },
+    { date: '2025-01-15', open: 115, high: 125, low: 105, close: 110 },
+    { date: '2025-01-16', open: 110, high: 120, low: 100, close: 105 },
+    { date: '2025-01-17', open: 105, high: 115, low: 95, close: 100 }
   ];
+
 
   const data = {
     labels: stockData.map(item => item.date),
@@ -154,7 +116,7 @@ const StockChart = () => {
 
   return (
     <div style={{ width: '100%', height: '500px', padding: '20px' }}>
-      <Line 
+      <Line
         id="stockChart"
         data={data}
         options={options}
