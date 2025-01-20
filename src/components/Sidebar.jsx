@@ -1,7 +1,9 @@
 import React from 'react';
 import '../assets/styles/Sidebar.css';
-
+import { useContext } from 'react';
+import {StockValue} from '../pages/Home'
 const Sidebar = () => {
+    const {stock,updateStock}=useContext(StockValue);
     const data = [
         { name: 'BHARTIARTL.NS' },
         { name: 'GOOG' },
@@ -14,7 +16,9 @@ const Sidebar = () => {
         { name: 'SBIN.NS' },
         { name: 'TCS.NS' }
     ];
-
+    const handleClick=(e)=>{
+        updateStock(e.target.id);
+    }
     return (
         <div className="sidebar">
             <div className="search-bar">
@@ -23,8 +27,8 @@ const Sidebar = () => {
             </div>
             <div className="stocks-list">
                 {data.map((item, index) => (
-                    <div className={`stock-item ${item.isPositive ? 'positive' : 'negative'}`} key={index}>
-                        <span className="stock-name">{item.name}</span>
+                    <div className={`stock-item ${item.isPositive ? 'positive' : 'negative'}`} key={index} onClick={handleClick} id={item.name}>
+                        <span className="stock-name" id={item.name}>{item.name}</span>
                     </div>
                 ))}
             </div>
